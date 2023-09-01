@@ -1,4 +1,6 @@
 {
+  "$schema": "./schema.json",
+  "port": 4096,
   "domain": "https://go.trulyao.dev",
   "packages": [
     {
@@ -8,8 +10,18 @@
         "owner": "aosasona",
         "name": "logsnag.go"
       },
-      "type": "git",
-      "description": ""
+      "type": "library",
+      "readme": "https://raw.githubusercontent.com/aosasona/logsnag.go/master/README.md"
+    },
+    {
+      "name": "bazooka",
+      "repo": {
+        "host": "github.com",
+        "owner": "aosasona",
+        "name": "bazooka"
+      },
+      "type": "project",
+      "readme": "https://raw.githubusercontent.com/aosasona/logsnag.go/master/README.md"
     }
   ]
 }

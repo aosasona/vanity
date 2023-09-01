@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://go.trulyao.dev/schemas/config.json",
+  "required": [
+    "domain",
+    "port",
+    "packages"
+  ],
+  "title": "go.trulyao.dev config schema",
+  "type": "object",
+  "properties": {
+    "domain": {
+      "type": "string",
+      "description": "The domain name of the website"
+    },
+    "port": {
+      "type": "integer",
+      "description": "The port to run the server on",
+      "default": 8080,
+      "minimum": 1025,
+      "maximum": 65535
+    },
+    "packages": {
+      "type": "array",
+      "description": "Available public packages",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the package"
+          },
+          "repo": {
+            "type": "object",
+            "description": "The package's repository details",
+            "properties": {
+              "host": {
+                "type": "string",
+                "description": "The host of the repository eg. github.com - no http:// or https:// prefix",
+                "default": "github.com",
+                "pattern": "^[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*$",
+                "examples": [
+                  "github.com",
+                  "gitlab.com"
+                ]
+              },
+              "owner": {
+                "type": "string",
+                "description": "The owner of the repository"
+              },
+              "name": {
+                "type": "string",
+                "description": "The name of the repository"
+              }
+            }
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of package",
+            "enum": [
+              "library",
+              "project"
+            ]
+          },
+          "readme": {
+            "type": "string",
+            "description": "A URL to the README file - accepts URI and relative paths",
+            "format": "uri-reference",
+            "default": "https://raw.githubusercontent.com/<user>/<repo>/master/README.md"
+          }
+        },
+        "required": [
+          "name",
+          "repo",
+          "type"
+        ]
+      }
+    }
+  }
+}

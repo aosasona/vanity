@@ -1,8 +1,18 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-  <meta name="go-import"
-    content="{{ .Domain }}/{{ .PackageName }} git https://{{ .RepoHost }}/{{ .RepoOwner }}/{{ .RepoName }}" />
+  <meta name="go-import" content="{{ .Domain }}/{{ .PackageName }} git {{ .RepoURL }}" />
+  <meta http-equiv="refresh" content="0;URL='{{ .RepoURL }}'" />
 </head>
+
+<body style="padding-inline: 1.25rem; padding-block: 0.75rem">
+  <h1 style="font-family: Arial, Helvetica, sans-serif">{{ .PackageName }}</h1>
+  <p
+    style="width: max-content; font-family: monospace; background-color: #efefef; padding-block: 0.6rem; padding-inline: 1.25rem; border-radius: 5px">
+    go get {{ .Domain }}/{{ .PackageName }}
+  </p>
+  <p style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; margin-top: 2rem">Redirecting...</p>
+</body>
 
 </html>

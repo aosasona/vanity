@@ -3,6 +3,8 @@ package config
 import "fmt"
 
 type (
+	PackageType string
+
 	Repository struct {
 		Host  string `json:"host"`
 		Owner string `json:"owner"`
@@ -10,11 +12,18 @@ type (
 	}
 
 	Package struct {
-		Name string     `json:"name"`
-		Repo Repository `json:"repo"`
+		Name   string      `json:"name"`
+		Repo   Repository  `json:"repo"`
+		Type   PackageType `json:"type"`
+		Readme string      `json:"readme"`
 	}
 
 	Packages []Package
+)
+
+const (
+	Library PackageType = "library"
+	Project PackageType = "project"
 )
 
 func (p Packages) Get(name string) (Package, bool) {
