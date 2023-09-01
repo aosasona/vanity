@@ -1,0 +1,15 @@
+{
+  "domain": "https://go.trulyao.dev",
+  "packages": [
+    {
+      "name": "logsnag",
+      "repo": {
+        "host": "github.com",
+        "owner": "aosasona",
+        "name": "logsnag.go"
+      },
+      "type": "git",
+      "description": ""
+    }
+  ]
+}
