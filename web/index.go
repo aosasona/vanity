@@ -7,7 +7,10 @@ import (
 	embedded "go.trulyao"
 )
 
-func Index(w http.ResponseWriter, r *http.Request) {}
+func Index(w http.ResponseWriter, r *http.Request) {
+	// TODO: implement the index someday
+	w.Write([]byte("Hello, world!"))
+}
 
 func Schemas(w http.ResponseWriter, r *http.Request) {
 	schema := chi.URLParam(r, "schema")

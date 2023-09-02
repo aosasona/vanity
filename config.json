@@ -1,7 +1,7 @@
 {
   "$schema": "https://go.trulyao.dev/schemas/config.json",
   "port": 4096,
-  "domain": "https://go.trulyao.dev",
+  "domain": "go.trulyao.dev",
   "packages": [
     {
       "name": "gots",
@@ -14,14 +14,14 @@
       "readme": "https://raw.githubusercontent.com/aosasona/gots/master/README.md"
     },
     {
-      "name": "logsnag",
+      "name": "boilerplate",
       "repo": {
         "host": "github.com",
         "owner": "aosasona",
-        "name": "logsnag.go"
+        "name": "go-echo-boilerplate"
       },
-      "type": "library",
-      "readme": "https://raw.githubusercontent.com/aosasona/logsnag.go/master/README.md"
+      "type": "project",
+      "readme": "https://raw.githubusercontent.com/aosasona/go-echo-boilerplate/master/README.md"
     },
     {
       "name": "bazooka",
@@ -32,6 +32,36 @@
       },
       "type": "project",
       "readme": "https://raw.githubusercontent.com/aosasona/bazooka/master/README.md"
+    },
+    {
+      "name": "b64",
+      "repo": {
+        "host": "github.com",
+        "owner": "aosasona",
+        "name": "b64"
+      },
+      "type": "project",
+      "readme": "https://raw.githubusercontent.com/aosasona/b64/master/README.md"
+    },
+    {
+      "name": "interim",
+      "repo": {
+        "host": "github.com",
+        "owner": "aosasona",
+        "name": "interim"
+      },
+      "type": "library",
+      "readme": "https://raw.githubusercontent.com/aosasona/interim/master/README.md"
+    },
+    {
+      "name": "logsnag",
+      "repo": {
+        "host": "github.com",
+        "owner": "aosasona",
+        "name": "logsnag.go"
+      },
+      "type": "library",
+      "readme": "https://raw.githubusercontent.com/aosasona/logsnag.go/master/README.md"
     }
   ]
 }
