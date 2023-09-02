@@ -1,5 +1,5 @@
 {
-  "$schema": "./schema.json",
+  "$schema": "https://go.trulyao.dev/schemas/config.json",
   "port": 4096,
   "domain": "https://go.trulyao.dev",
   "packages": [
