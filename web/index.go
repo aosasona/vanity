@@ -9,7 +9,7 @@ import (
 
 func Index(w http.ResponseWriter, r *http.Request) {
 	// TODO: implement the index someday
-	w.Write([]byte("Hello, world!"))
+	w.Write([]byte("Nothing on this page..."))
 }
 
 func Schemas(w http.ResponseWriter, r *http.Request) {

@@ -24,6 +24,16 @@
       "readme": "https://raw.githubusercontent.com/aosasona/go-echo-boilerplate/master/README.md"
     },
     {
+      "name": "lito",
+      "repo": {
+        "host": "github.com",
+        "owner": "aosasona",
+        "name": "lito"
+      },
+      "type": "library",
+      "readme": "https://raw.githubusercontent.com/aosasona/lito/master/README.md"
+    },
+    {
       "name": "bazooka",
       "repo": {
         "host": "github.com",
