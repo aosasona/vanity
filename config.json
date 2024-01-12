@@ -4,6 +4,26 @@
   "domain": "go.trulyao.dev",
   "packages": [
     {
+      "name": "mirror",
+      "repo": {
+        "host": "github.com",
+        "owner": "aosasona",
+        "name": "mirror"
+      },
+      "type": "library",
+      "readme": "https://raw.githubusercontent.com/aosasona/mirror/master/README.md"
+    },
+    {
+      "name": "robin",
+      "repo": {
+        "host": "github.com",
+        "owner": "aosasona",
+        "name": "robin"
+      },
+      "type": "library",
+      "readme": "https://raw.githubusercontent.com/aosasona/robin/master/README.md"
+    },
+    {
       "name": "gots",
       "repo": {
         "host": "github.com",
