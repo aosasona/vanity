@@ -15,6 +15,8 @@ type PackageVars struct {
 	Domain      string
 	PackageName string
 	RepoURL     string
+	SourceURL   string
+	SubPath     string
 }
 
 func ServePackage(w http.ResponseWriter, r *http.Request) {
@@ -47,8 +49,10 @@ func ServePackage(w http.ResponseWriter, r *http.Request) {
 
 	repoURL := fmt.Sprintf("https://%s/%s/%s", p.Repo.Host, p.Repo.Owner, p.Repo.Name)
 	if p.Type == config.Project {
-		// redirect to repo if it is a project
 		http.Redirect(w, r, repoURL, http.StatusFound)
+		return
+	} else if p.Type == config.Executable {
+		http.Redirect(w, r, fmt.Sprintf("%s/releases", repoURL), http.StatusFound)
 		return
 	}
 
@@ -58,10 +62,23 @@ func ServePackage(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Header().Set("Cache-Control", fmt.Sprintf("public, max-age=%d", cacheMaxAge))
 
+	source := fmt.Sprintf("%s %s/tree/master{/dir} %s/blob/master{/dir}/{file}#L{line}", repoURL, repoURL, repoURL)
+	if strings.Contains(repoURL, "gitlab") {
+		source = fmt.Sprintf("%v %v/-/tree/master{/dir} %v/-/blob/master{/dir}/{file}#L{line}", repoURL, repoURL, repoURL)
+	} else if strings.Contains(repoURL, "bitbucket") {
+		source = fmt.Sprintf("%v %v/src/master{/dir} %v/src/master{/dir}/{file}#lines-{line}", repoURL, repoURL, repoURL)
+	}
+
+	if p.SubPath != "" {
+		repoURL = fmt.Sprintf("%s/%s", source, strings.Trim(p.SubPath, "/"))
+	}
+
 	err = t.Execute(w, PackageVars{
 		Domain:      vanityConfig.Domain,
 		PackageName: p.Name,
 		RepoURL:     repoURL,
+		SourceURL:   source,
+		SubPath:     p.SubPath,
 	})
 
 	if err != nil {

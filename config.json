@@ -21,7 +21,7 @@
         "owner": "aosasona",
         "name": "mirror"
       },
-      "type": "library",
+      "type": "module",
       "readme": "https://raw.githubusercontent.com/aosasona/mirror/master/README.md"
     },
     {
@@ -31,7 +31,7 @@
         "owner": "aosasona",
         "name": "robin"
       },
-      "type": "library",
+      "type": "module",
       "readme": "https://raw.githubusercontent.com/aosasona/robin/master/README.md"
     },
     {
@@ -41,7 +41,7 @@
         "owner": "aosasona",
         "name": "gots"
       },
-      "type": "library",
+      "type": "module",
       "readme": "https://raw.githubusercontent.com/aosasona/gots/master/README.md"
     },
     {
@@ -61,7 +61,7 @@
         "owner": "aosasona",
         "name": "lito"
       },
-      "type": "library",
+      "type": "module",
       "readme": "https://raw.githubusercontent.com/aosasona/lito/master/README.md"
     },
     {
@@ -91,7 +91,7 @@
         "owner": "aosasona",
         "name": "interim"
       },
-      "type": "library",
+      "type": "module",
       "readme": "https://raw.githubusercontent.com/aosasona/interim/master/README.md"
     },
     {
@@ -101,7 +101,7 @@
         "owner": "aosasona",
         "name": "logsnag.go"
       },
-      "type": "library",
+      "type": "module",
       "readme": "https://raw.githubusercontent.com/aosasona/logsnag.go/master/README.md"
     }
   ]

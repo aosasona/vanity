@@ -2,8 +2,10 @@
 <html>
 
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="go-import" content="{{ .Domain }}/{{ .PackageName }} git {{ .RepoURL }}" />
-  <meta http-equiv="refresh" content="0;URL='{{ .RepoURL }}'" />
+  <meta name="go-source" content="{{ .Domain }}/{{ .PackageName }} {{ .SourceURL }}">
+  <meta http-equiv="refresh" content="0; url='{{ .RepoURL }}'" />
 </head>
 
 <body style="padding-inline: 1.25rem; padding-block: 0.75rem">
