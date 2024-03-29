@@ -2,7 +2,18 @@
   "$schema": "https://go.trulyao.dev/schemas/config.json",
   "port": 4096,
   "domain": "go.trulyao.dev",
+  "maxCacheAge": 3600,
   "packages": [
+    {
+      "name": "vanity",
+      "repo": {
+        "host": "github.com",
+        "owner": "aosasona",
+        "name": "vanity"
+      },
+      "type": "executable",
+      "readme": "https://raw.githubusercontent.com/aosasona/vanity/master/README.md"
+    },
     {
       "name": "mirror",
       "repo": {

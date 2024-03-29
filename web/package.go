@@ -8,8 +8,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/rs/zerolog/log"
-	embedded "go.trulyao"
-	"go.trulyao/config"
+	"go.trulyao.dev/vanity/config"
 )
 
 type PackageVars struct {
@@ -25,7 +24,7 @@ func ServePackage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	templateString, err := embedded.Templates.ReadFile("web/templates/package.tmpl.html")
+	templateString, err := Templates.ReadFile("templates/package.tmpl.html")
 	if err != nil {
 		log.Error().Err(err).Msg("Failed to read template")
 		w.WriteHeader(http.StatusInternalServerError)
@@ -39,7 +38,7 @@ func ServePackage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	p, exists := config.Pkgs().Get(strings.ToLower(pkg))
+	p, exists := vanityConfig.Packages.Get(strings.ToLower(pkg))
 	if !exists {
 		log.Error().Str("package", pkg).Msg("Package not found")
 		w.WriteHeader(http.StatusNotFound)
@@ -53,8 +52,14 @@ func ServePackage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	cacheMaxAge := int64(86400)
+	if vanityConfig.MaxCacheAge > 0 {
+		cacheMaxAge = vanityConfig.MaxCacheAge
+	}
+	w.Header().Set("Cache-Control", fmt.Sprintf("public, max-age=%d", cacheMaxAge))
+
 	err = t.Execute(w, PackageVars{
-		Domain:      config.Domain(),
+		Domain:      vanityConfig.Domain,
 		PackageName: p.Name,
 		RepoURL:     repoURL,
 	})

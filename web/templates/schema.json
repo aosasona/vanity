@@ -20,6 +20,12 @@
       "minimum": 1025,
       "maximum": 65535
     },
+    "maxCacheAge": {
+      "type": "integer",
+      "description": "The maximum age of the cache in seconds",
+      "default": 3600,
+      "minimum": 0
+    },
     "packages": {
       "type": "array",
       "description": "Available public packages",
@@ -59,7 +65,8 @@
             "description": "The type of package",
             "enum": [
               "library",
-              "project"
+              "project",
+              "executable"
             ]
           },
           "readme": {
@@ -71,8 +78,7 @@
         },
         "required": [
           "name",
-          "repo",
-          "type"
+          "repo"
         ]
       }
     }

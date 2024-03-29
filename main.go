@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"net/http"
 
@@ -9,14 +10,24 @@ import (
 	"github.com/go-chi/cors"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
-	"go.trulyao/config"
-	"go.trulyao/web"
+	"go.trulyao.dev/vanity/config"
+	"go.trulyao.dev/vanity/web"
 )
 
 func main() {
+	configPath := flag.String("config", "config.json", "Path to the configuration file")
+	flag.Parse()
+
 	zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
 
 	r := chi.NewRouter()
+
+	config, err := config.Load(*configPath)
+	if err != nil {
+		log.Fatal().Err(err).Msg("Failed to load configuration")
+	}
+
+	web.SetConfig(&config)
 
 	r.Use(cors.AllowAll().Handler)
 	r.Use(middleware.Logger)
@@ -28,11 +39,11 @@ func main() {
 	r.Get("/schemas/{schema}", web.Schemas)
 
 	srv := &http.Server{
-		Addr:    fmt.Sprintf(":%d", config.Port()),
+		Addr:    fmt.Sprintf(":%d", config.Port),
 		Handler: r,
 	}
 
-	log.Info().Msgf("Starting server on port %d", config.Port())
+	log.Info().Msgf("Starting server on port %d", config.Port)
 	if err := srv.ListenAndServe(); err != nil {
 		log.Fatal().Err(err).Msg("Failed to start server")
 	}

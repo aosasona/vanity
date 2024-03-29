@@ -22,8 +22,9 @@ type (
 )
 
 const (
-	Library PackageType = "library"
-	Project PackageType = "project"
+	Library    PackageType = "library"
+	Project    PackageType = "project"
+	Executable PackageType = "executable"
 )
 
 func (p Packages) Get(name string) (Package, bool) {

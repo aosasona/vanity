@@ -3,38 +3,34 @@ package config
 import (
 	"encoding/json"
 	"fmt"
-
-	embedded "go.trulyao"
+	"os"
 )
 
-var configBytes = embedded.Config
-
 type Config struct {
-	Domain   string   `json:"domain"`
-	Port     uint     `json:"port"`
-	Packages Packages `json:"packages"`
+	Domain      string   `json:"domain"`
+	Port        uint     `json:"port"`
+	MaxCacheAge int64    `json:"maxCacheAge"`
+	Packages    Packages `json:"packages"`
 }
 
-var c Config
+func Load(path string) (Config, error) {
+	var (
+		c   Config
+		err error = nil
+	)
 
-func init() {
-	if err := json.Unmarshal(configBytes, &c); err != nil {
-		panic(err)
+	configBytes, err := os.ReadFile(path)
+	if err != nil {
+		return Config{}, err
 	}
+
+	if err = json.Unmarshal(configBytes, &c); err != nil {
+		return Config{}, err
+	}
+
+	return c, err
 }
 
-func Port() uint {
-	return c.Port
-}
-
-func Domain() string {
-	return c.Domain
-}
-
-func Pkgs() Packages {
-	return c.Packages
-}
-
-func String() string {
+func (c Config) String() string {
 	return fmt.Sprintf("Domain: %s\nPackages:\n%s", c.Domain, c.Packages)
 }
