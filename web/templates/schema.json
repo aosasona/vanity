@@ -64,9 +64,18 @@
             "type": "string",
             "description": "The type of package",
             "enum": [
-              "library",
-              "project",
-              "executable"
+              "module",
+              "executable",
+              "project"
+            ]
+          },
+          "subPath": {
+            "type": "string",
+            "description": "This is useful if the package is a sub-package of another package, say you have one repo with multiple packages in it and you want to serve one particular package or customize the package root  e.g. github.com/user/repo/foo, this would be foo",
+            "pattern": "(^[a-za-z0-9-_]+)((/+)([a-za-z0-9-_]+))+",
+            "examples": [
+              "foo",
+              "foo/bar"
             ]
           },
           "readme": {
