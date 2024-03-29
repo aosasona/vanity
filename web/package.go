@@ -52,6 +52,12 @@ func ServePackage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	cacheMaxAge := int64(86400)
+	if vanityConfig.MaxCacheAge > 0 {
+		cacheMaxAge = vanityConfig.MaxCacheAge
+	}
+	w.Header().Set("Cache-Control", fmt.Sprintf("public, max-age=%d", cacheMaxAge))
+
 	err = t.Execute(w, PackageVars{
 		Domain:      vanityConfig.Domain,
 		PackageName: p.Name,

@@ -65,7 +65,8 @@
             "description": "The type of package",
             "enum": [
               "library",
-              "project"
+              "project",
+              "executable"
             ]
           },
           "readme": {
@@ -77,8 +78,7 @@
         },
         "required": [
           "name",
-          "repo",
-          "type"
+          "repo"
         ]
       }
     }

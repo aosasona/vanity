@@ -7,9 +7,10 @@ import (
 )
 
 type Config struct {
-	Domain   string   `json:"domain"`
-	Port     uint     `json:"port"`
-	Packages Packages `json:"packages"`
+	Domain      string   `json:"domain"`
+	Port        uint     `json:"port"`
+	MaxCacheAge int64    `json:"maxCacheAge"`
+	Packages    Packages `json:"packages"`
 }
 
 func Load(path string) (Config, error) {
