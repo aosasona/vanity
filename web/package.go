@@ -20,7 +20,9 @@ type PackageVars struct {
 }
 
 func ServePackage(w http.ResponseWriter, r *http.Request) {
+	isGoGet := r.URL.Query().Get("go-get") == "1"
 	pkg := chi.URLParam(r, "package")
+
 	if pkg == "" {
 		http.Error(w, "No package specified", http.StatusBadRequest)
 		return
@@ -51,7 +53,7 @@ func ServePackage(w http.ResponseWriter, r *http.Request) {
 	if p.Type == config.Project {
 		http.Redirect(w, r, repoURL, http.StatusFound)
 		return
-	} else if p.Type == config.Executable {
+	} else if p.Type == config.Executable && !isGoGet {
 		http.Redirect(w, r, fmt.Sprintf("%s/releases", repoURL), http.StatusFound)
 		return
 	}

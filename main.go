@@ -15,10 +15,18 @@ import (
 )
 
 func main() {
+	initConfig := flag.Bool("init", false, "Initialize a new configuration file")
 	configPath := flag.String("config", "config.json", "Path to the configuration file")
 	flag.Parse()
 
 	zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
+
+	if *initConfig {
+		if err := config.CreateDefaultConfig(*configPath); err != nil {
+			fmt.Printf("Failed to create default configuration: %s", err.Error())
+		}
+		return
+	}
 
 	r := chi.NewRouter()
 
@@ -35,8 +43,8 @@ func main() {
 	r.Use(middleware.Heartbeat("/ping"))
 
 	r.Get("/", web.Index)
-	r.Get("/{package}", web.ServePackage)
 	r.Get("/schemas/{schema}", web.Schemas)
+	r.Get("/{package}", web.ServePackage)
 
 	srv := &http.Server{
 		Addr:    fmt.Sprintf(":%d", config.Port),
