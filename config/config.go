@@ -6,11 +6,46 @@ import (
 	"os"
 )
 
+const defaultConfig = `{
+  "$schema": "https://go.trulyao.dev/schemas/config.json",
+  "port": 8080,
+  "domain": "example.com",
+  "maxCacheAge": 3600,
+  "packages": [
+        {
+          "name": "foo",
+          "repo": {
+            "host": "github.com",
+            "owner": "user",
+            "name": "foo"
+          },
+          "type": "module",
+          "readme": "https://raw.githubusercontent.com/user/foo/master/README.md"
+        }
+    ]
+}
+`
+
 type Config struct {
 	Domain      string   `json:"domain"`
 	Port        uint     `json:"port"`
 	MaxCacheAge int64    `json:"maxCacheAge"`
 	Packages    Packages `json:"packages"`
+}
+
+func CreateDefaultConfig(path string) error {
+	f, err := os.Create(path)
+	if err != nil {
+		return err
+	}
+
+	defer f.Close()
+
+	if _, err := f.WriteString(defaultConfig); err != nil {
+		return err
+	}
+
+	return nil
 }
 
 func Load(path string) (Config, error) {
