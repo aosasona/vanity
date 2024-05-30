@@ -35,6 +35,16 @@
       "readme": "https://raw.githubusercontent.com/aosasona/robin/master/README.md"
     },
     {
+      "name": "seer",
+      "repo": {
+        "host": "github.com",
+        "owner": "aosasona",
+        "name": "seer"
+      },
+      "type": "module",
+      "readme": "https://raw.githubusercontent.com/aosasona/seer/master/README.md"
+    },
+    {
       "name": "gots",
       "repo": {
         "host": "github.com",
