@@ -22,6 +22,7 @@ type PackageVars struct {
 func ServePackage(w http.ResponseWriter, r *http.Request) {
 	isGoGet := r.URL.Query().Get("go-get") == "1"
 	pkg := chi.URLParam(r, "package")
+	version := chi.URLParam(r, "version")
 
 	if pkg == "" {
 		http.Error(w, "No package specified", http.StatusBadRequest)
@@ -49,6 +50,10 @@ func ServePackage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if version != "" {
+		p.Name = fmt.Sprintf("%s/v%s", p.Name, version)
+	}
+
 	repoURL := fmt.Sprintf("https://%s/%s/%s", p.Repo.Host, p.Repo.Owner, p.Repo.Name)
 	if p.Type == config.Project {
 		http.Redirect(w, r, repoURL, http.StatusFound)
@@ -64,9 +69,19 @@ func ServePackage(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Header().Set("Cache-Control", fmt.Sprintf("public, max-age=%d", cacheMaxAge))
 
-	source := fmt.Sprintf("%s %s/tree/master{/dir} %s/blob/master{/dir}/{file}#L{line}", repoURL, repoURL, repoURL)
+	source := fmt.Sprintf(
+		"%s %s/tree/master{/dir} %s/blob/master{/dir}/{file}#L{line}",
+		repoURL,
+		repoURL,
+		repoURL,
+	)
 	if strings.Contains(repoURL, "gitlab") {
-		source = fmt.Sprintf("%v %v/-/tree/master{/dir} %v/-/blob/master{/dir}/{file}#L{line}", repoURL, repoURL, repoURL)
+		source = fmt.Sprintf(
+			"%v %v/-/tree/master{/dir} %v/-/blob/master{/dir}/{file}#L{line}",
+			repoURL,
+			repoURL,
+			repoURL,
+		)
 	} else if strings.Contains(repoURL, "bitbucket") {
 		source = fmt.Sprintf("%v %v/src/master{/dir} %v/src/master{/dir}/{file}#lines-{line}", repoURL, repoURL, repoURL)
 	}
@@ -82,7 +97,6 @@ func ServePackage(w http.ResponseWriter, r *http.Request) {
 		SourceURL:   source,
 		SubPath:     p.SubPath,
 	})
-
 	if err != nil {
 		log.Error().Err(err).Msg("Failed to execute template")
 		w.WriteHeader(http.StatusInternalServerError)
