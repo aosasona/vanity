@@ -45,6 +45,7 @@ func main() {
 	r.Get("/", web.Index)
 	r.Get("/schemas/{schema}", web.Schemas)
 	r.Get("/{package}", web.ServePackage)
+	r.Get("/{package}/cmd/*", web.ServePackage)
 	r.Get("/{package}/v{version}", web.ServePackage)
 
 	srv := &http.Server{
