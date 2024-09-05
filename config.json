@@ -15,6 +15,16 @@
       "readme": "https://raw.githubusercontent.com/aosasona/vanity/master/README.md"
     },
     {
+      "name": "bore",
+      "repo": {
+        "host": "github.com",
+        "owner": "aosasona",
+        "name": "bore"
+      },
+      "type": "module",
+      "readme": "https://raw.githubusercontent.com/aosasona/bore/master/README.md"
+    },
+    {
       "name": "mirror",
       "repo": {
         "host": "github.com",
