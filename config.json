@@ -1,118 +1,128 @@
 {
-  "$schema": "https://go.trulyao.dev/schemas/config.json",
-  "port": 4096,
-  "domain": "go.trulyao.dev",
-  "maxCacheAge": 3600,
-  "packages": [
-    {
-      "name": "vanity",
-      "repo": {
-        "host": "github.com",
-        "owner": "aosasona",
-        "name": "vanity"
-      },
-      "type": "executable",
-      "readme": "https://raw.githubusercontent.com/aosasona/vanity/master/README.md"
-    },
-    {
-      "name": "bore",
-      "repo": {
-        "host": "github.com",
-        "owner": "aosasona",
-        "name": "bore"
-      },
-      "type": "module",
-      "readme": "https://raw.githubusercontent.com/aosasona/bore/master/README.md"
-    },
-    {
-      "name": "mirror",
-      "repo": {
-        "host": "github.com",
-        "owner": "aosasona",
-        "name": "mirror"
-      },
-      "type": "module",
-      "readme": "https://raw.githubusercontent.com/aosasona/mirror/master/README.md"
-    },
-    {
-      "name": "robin",
-      "repo": {
-        "host": "github.com",
-        "owner": "aosasona",
-        "name": "robin"
-      },
-      "type": "module",
-      "readme": "https://raw.githubusercontent.com/aosasona/robin/master/README.md"
-    },
-    {
-      "name": "gots",
-      "repo": {
-        "host": "github.com",
-        "owner": "aosasona",
-        "name": "gots"
-      },
-      "type": "module",
-      "readme": "https://raw.githubusercontent.com/aosasona/gots/master/README.md"
-    },
-    {
-      "name": "boilerplate",
-      "repo": {
-        "host": "github.com",
-        "owner": "aosasona",
-        "name": "go-echo-boilerplate"
-      },
-      "type": "project",
-      "readme": "https://raw.githubusercontent.com/aosasona/go-echo-boilerplate/master/README.md"
-    },
-    {
-      "name": "lito",
-      "repo": {
-        "host": "github.com",
-        "owner": "aosasona",
-        "name": "lito"
-      },
-      "type": "module",
-      "readme": "https://raw.githubusercontent.com/aosasona/lito/master/README.md"
-    },
-    {
-      "name": "bazooka",
-      "repo": {
-        "host": "github.com",
-        "owner": "aosasona",
-        "name": "bazooka"
-      },
-      "type": "project",
-      "readme": "https://raw.githubusercontent.com/aosasona/bazooka/master/README.md"
-    },
-    {
-      "name": "b64",
-      "repo": {
-        "host": "github.com",
-        "owner": "aosasona",
-        "name": "b64"
-      },
-      "type": "project",
-      "readme": "https://raw.githubusercontent.com/aosasona/b64/master/README.md"
-    },
-    {
-      "name": "interim",
-      "repo": {
-        "host": "github.com",
-        "owner": "aosasona",
-        "name": "interim"
-      },
-      "type": "module",
-      "readme": "https://raw.githubusercontent.com/aosasona/interim/master/README.md"
-    },
-    {
-      "name": "logsnag",
-      "repo": {
-        "host": "github.com",
-        "owner": "aosasona",
-        "name": "logsnag.go"
-      },
-      "type": "module",
-      "readme": "https://raw.githubusercontent.com/aosasona/logsnag.go/master/README.md"
-    }
-  ]
+	"$schema": "https://go.trulyao.dev/schemas/config.json",
+	"port": 4096,
+	"domain": "go.trulyao.dev",
+	"maxCacheAge": 3600,
+	"packages": [
+		{
+			"name": "vanity",
+			"repo": {
+				"host": "github.com",
+				"owner": "aosasona",
+				"name": "vanity"
+			},
+			"type": "executable",
+			"readme": "https://raw.githubusercontent.com/aosasona/vanity/master/README.md"
+		},
+		{
+			"name": "bore",
+			"repo": {
+				"host": "github.com",
+				"owner": "aosasona",
+				"name": "bore"
+			},
+			"type": "module",
+			"readme": "https://raw.githubusercontent.com/aosasona/bore/master/README.md"
+		},
+		{
+			"name": "mirror",
+			"repo": {
+				"host": "github.com",
+				"owner": "aosasona",
+				"name": "mirror"
+			},
+			"type": "module",
+			"readme": "https://raw.githubusercontent.com/aosasona/mirror/master/README.md"
+		},
+		{
+			"name": "seer",
+			"repo": {
+				"host": "github.com",
+				"owner": "aosasona",
+				"name": "seer"
+			},
+			"type": "module",
+			"readme": "https://raw.githubusercontent.com/aosasona/seer/master/README.md"
+		},
+		{
+			"name": "robin",
+			"repo": {
+				"host": "github.com",
+				"owner": "aosasona",
+				"name": "robin"
+			},
+			"type": "module",
+			"readme": "https://raw.githubusercontent.com/aosasona/robin/master/README.md"
+		},
+		{
+			"name": "gots",
+			"repo": {
+				"host": "github.com",
+				"owner": "aosasona",
+				"name": "gots"
+			},
+			"type": "module",
+			"readme": "https://raw.githubusercontent.com/aosasona/gots/master/README.md"
+		},
+		{
+			"name": "boilerplate",
+			"repo": {
+				"host": "github.com",
+				"owner": "aosasona",
+				"name": "go-echo-boilerplate"
+			},
+			"type": "project",
+			"readme": "https://raw.githubusercontent.com/aosasona/go-echo-boilerplate/master/README.md"
+		},
+		{
+			"name": "lito",
+			"repo": {
+				"host": "github.com",
+				"owner": "aosasona",
+				"name": "lito"
+			},
+			"type": "module",
+			"readme": "https://raw.githubusercontent.com/aosasona/lito/master/README.md"
+		},
+		{
+			"name": "bazooka",
+			"repo": {
+				"host": "github.com",
+				"owner": "aosasona",
+				"name": "bazooka"
+			},
+			"type": "project",
+			"readme": "https://raw.githubusercontent.com/aosasona/bazooka/master/README.md"
+		},
+		{
+			"name": "b64",
+			"repo": {
+				"host": "github.com",
+				"owner": "aosasona",
+				"name": "b64"
+			},
+			"type": "project",
+			"readme": "https://raw.githubusercontent.com/aosasona/b64/master/README.md"
+		},
+		{
+			"name": "interim",
+			"repo": {
+				"host": "github.com",
+				"owner": "aosasona",
+				"name": "interim"
+			},
+			"type": "module",
+			"readme": "https://raw.githubusercontent.com/aosasona/interim/master/README.md"
+		},
+		{
+			"name": "logsnag",
+			"repo": {
+				"host": "github.com",
+				"owner": "aosasona",
+				"name": "logsnag.go"
+			},
+			"type": "module",
+			"readme": "https://raw.githubusercontent.com/aosasona/logsnag.go/master/README.md"
+		}
+	]
 }
